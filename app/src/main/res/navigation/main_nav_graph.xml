@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph">
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.registration.RegistrationFragment"
+        android:label="RegistrationFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.SomeFragment"
+        android:label="ProfileFragment" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.rabotyagi.onboarding.hackaton.ui.frags.login.LoginFragment"

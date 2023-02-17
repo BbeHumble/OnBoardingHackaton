@@ -3,8 +3,12 @@ package com.rabotyagi.onboarding.hackaton.data.repository
 import com.rabotyagi.onboarding.hackaton.data.api.ApiService
 import com.rabotyagi.onboarding.hackaton.schedule.SchedulersProvider
 import io.reactivex.Completable
+import io.reactivex.rxjava3.core.Observable
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import com.rabotyagi.onboarding.hackaton.data.model.Department
+import com.rabotyagi.onboarding.hackaton.data.model.Role
+import com.rabotyagi.onboarding.hackaton.data.model.UserData
 import javax.inject.Inject
 
 class Repository @Inject internal constructor(
@@ -17,6 +21,18 @@ class Repository @Inject internal constructor(
             password.toRequestBody("text/plain".toMediaTypeOrNull())
         ).subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
+    }
+
+    fun fetchDepartmentList(): Observable<List<Department>> {
+        return apiService.getDepartments()
+    }
+
+    fun register(userData: UserData) {
+        return apiService.register(userData)
+    }
+
+    fun fetchRoles(): Observable<List<Role>> {
+        return apiService.getRoles()
     }
 
 }

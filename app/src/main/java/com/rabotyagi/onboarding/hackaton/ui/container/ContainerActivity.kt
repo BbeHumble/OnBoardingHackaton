@@ -31,8 +31,6 @@ class ContainerActivity : AppCompatActivity(R.layout.activity_main) {
         if (userSettings.getUserToken() == null)
             navGraph.setStartDestination(R.id.loginFragment)
         else navGraph.setStartDestination(R.id.viewFragment)
-
-
         navController.graph = navGraph
         navView.setupWithNavController(navController)
     }
