@@ -38,10 +38,11 @@ class ApiModule {
             .readTimeout(15, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val newRequest = chain.request().newBuilder()
-                    .addHeader(
-                        "Authorization",
-                        "Bearer " + userSettings.getUserToken()
-                    )
+                        //TODO set cookie header
+//                    .addHeader(
+//                        "Authorization",
+//                        "Bearer " + userSettings.getUserToken()
+//                    )
                     .build()
                 chain.proceed(newRequest)
             }
