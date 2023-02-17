@@ -2,6 +2,7 @@ package com.rabotyagi.onboarding.hackaton.di
 
 import com.rabotyagi.onboarding.hackaton.data.api.ApiService
 import com.rabotyagi.onboarding.hackaton.data.repository.Repository
+import com.rabotyagi.onboarding.hackaton.data.settings.UserSettings
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,17 +31,17 @@ class ApiModule {
     @Provides
     fun providesOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-//        userSettings: UserSettings
+        userSettings: UserSettings
     ): OkHttpClient =
         OkHttpClient
             .Builder()
             .readTimeout(15, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val newRequest = chain.request().newBuilder()
-//                    .addHeader(
-//                        "Authorization",
-//                        "Bearer " + userSettings.getUserToken()
-//                    )
+                    .addHeader(
+                        "Authorization",
+                        "Bearer " + userSettings.getUserToken()
+                    )
                     .build()
                 chain.proceed(newRequest)
             }
