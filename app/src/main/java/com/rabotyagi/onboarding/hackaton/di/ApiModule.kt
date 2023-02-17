@@ -1,11 +1,13 @@
 package com.rabotyagi.onboarding.hackaton.di
 
+import android.content.Context
 import com.rabotyagi.onboarding.hackaton.data.api.ApiService
 import com.rabotyagi.onboarding.hackaton.data.repository.Repository
 import com.rabotyagi.onboarding.hackaton.data.settings.UserSettings
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,7 +27,14 @@ class ApiModule {
         .apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
-
+    @Singleton
+    @Provides
+    fun providesUserSettings(@ApplicationContext context: Context) = UserSettings(
+        context.getSharedPreferences(
+            UserSettings.AUTH_TOKEN_KEY,
+            Context.MODE_PRIVATE
+        )
+    )
 
     @Singleton
     @Provides
@@ -67,7 +76,6 @@ class ApiModule {
     fun providesRepository(apiService: ApiService) = Repository(apiService)
 
     companion object {
-        //TODO set Url
-        private const val BASE_URL = ""
+        private const val BASE_URL = "http://83.220.169.145:8080"
     }
 }

@@ -11,7 +11,7 @@ import com.rabotyagi.onboarding.hackaton.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ContainerActivity:AppCompatActivity(R.layout.activity_main){
+class ContainerActivity : AppCompatActivity(R.layout.activity_main) {
     private var _binding: ActivityMainBinding? = null
     private val profileViewModel by viewModels<ContainerViewModel>()
     private val binding get() = _binding!!
@@ -23,9 +23,11 @@ class ContainerActivity:AppCompatActivity(R.layout.activity_main){
         val navController = navHostFragment.navController
         val navGraph = navController.navInflater.inflate(R.navigation.main_nav_graph)
         val navView: NavigationView = findViewById(R.id.nav_view)
-//        navGraph.setStartDestination(R.id.profileFragment)
+        navGraph.setStartDestination(R.id.profileFragment)
+
         navController.graph = navGraph
         navView.setupWithNavController(navController)
+        navController.navigate(R.id.profileFragment)
     }
 
 }
