@@ -1,8 +1,9 @@
 package com.rabotyagi.onboarding.hackaton.data.settings
 
 import android.content.SharedPreferences
+import javax.inject.Inject
 
-class UserSettings (private val sharedPreferences: SharedPreferences) {
+class UserSettings @Inject constructor (private val sharedPreferences: SharedPreferences) {
     companion object{
         const val AUTH_TOKEN_KEY = "auth token key"
     }

@@ -2,8 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph">
-<!--    <fragment-->
-<!--        android:id="@+id/profileFragment"-->
-<!--        android:name="com.bbehumble.sport.app.sportapp.ui.mainContent.profile.ProfileFragment"-->
-<!--        android:label="ProfileFragment" />-->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.login.LoginFragment"
+        android:label="LoginFragment" />
+
+    <fragment
+        android:id="@+id/viewFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.view.ViewFragment"
+        android:label="ViewFragment" />
 </navigation>
