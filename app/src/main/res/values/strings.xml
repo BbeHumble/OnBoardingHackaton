@@ -3,4 +3,7 @@
     <string name="Login">Войти</string>
     <string name="username">Логин</string>
     <string name="password">Пароль</string>
+    <string name="tv_continue">Продолжить</string>
+    <string name="surname">Фамилия</string>
+    <string name="name">Имя</string>
 </resources>

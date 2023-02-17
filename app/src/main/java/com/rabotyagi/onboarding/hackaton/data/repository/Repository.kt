@@ -9,6 +9,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import com.rabotyagi.onboarding.hackaton.data.model.Department
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
+import io.reactivex.Single
 import javax.inject.Inject
 
 class Repository @Inject internal constructor(
@@ -23,16 +24,19 @@ class Repository @Inject internal constructor(
             .observeOn(schedulers.ui())
     }
 
-    fun fetchDepartmentList(): Observable<List<Department>> {
-        return apiService.getDepartments()
+    fun fetchDepartmentList(): Single<List<Department>> {
+        return apiService.getDepartments().subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
-    fun register(userData: UserData) {
-        return apiService.register(userData)
+    fun register(userData: UserData): Completable {
+        return apiService.register(userData).subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
-    fun fetchRoles(): Observable<List<Role>> {
-        return apiService.getRoles()
+    fun fetchRoles(): Single<List<Role>> {
+        return apiService.getRoles().subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
 }

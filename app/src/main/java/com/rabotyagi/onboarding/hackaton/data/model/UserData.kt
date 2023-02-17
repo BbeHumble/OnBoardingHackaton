@@ -9,7 +9,7 @@ data class UserData(
     val password: String,
     @SerializedName("email")
     val email: String,
-    @SerializedName("roles")
+    @SerializedName("role")
     val roles: List<String>,
     @SerializedName("department")
     val department:Department

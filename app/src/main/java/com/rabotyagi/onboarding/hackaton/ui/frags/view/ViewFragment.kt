@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import com.rabotyagi.onboarding.hackaton.R
 import com.rabotyagi.onboarding.hackaton.databinding.FragmentViewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +24,13 @@ class ViewFragment : Fragment() {
     ): View {
         _binding = FragmentViewBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.continueButton.setOnClickListener {
+            it.findNavController().navigate(R.id.registrationFragment)
+        }
     }
 
     override fun onDestroyView() {

@@ -6,17 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.rabotyagi.onboarding.hackaton.R
 import com.rabotyagi.onboarding.hackaton.databinding.FragmentLoginBinding
+import com.rabotyagi.onboarding.hackaton.ui._global.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
 
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment() {
     private var _binding: FragmentLoginBinding? = null
     private val loginViewModel by viewModels<LoginViewModel>()
-    private val disposeOnPauseDisposables = CompositeDisposable()
 
     private val binding get() = _binding!!
 
@@ -41,23 +42,17 @@ class LoginFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loginViewModel.apply {
-            disposeOnPauseDisposables.addAll(
-                loading.subscribe {
-                    renderLoading(it)
-                },
-                data.subscribe {
-                    Toast.makeText(requireContext(), "Успех", Toast.LENGTH_SHORT).show()
-                },
-                error.subscribe {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                },
-            )
+            loading.subscribe {
+                renderLoading(it)
+            }.disposeOnPause()
+            data.subscribe {
+                findNavController().navigate(R.id.viewFragment)
+                Toast.makeText(requireContext(), "Успех", Toast.LENGTH_SHORT).show()
+            }.disposeOnPause()
+            error.subscribe {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }.disposeOnPause()
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        disposeOnPauseDisposables.clear()
     }
 
     private fun renderLoading(show: Boolean?) {
