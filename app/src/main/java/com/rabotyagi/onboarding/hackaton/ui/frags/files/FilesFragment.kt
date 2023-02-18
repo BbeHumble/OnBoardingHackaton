@@ -41,6 +41,7 @@ class FilesFragment : Fragment() {
                     renderFiles(files)
                 },
                 error.subscribe {
+
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 },
             )
