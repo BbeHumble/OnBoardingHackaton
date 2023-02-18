@@ -1,4 +1,4 @@
-package com.rabotyagi.onboarding.hackaton.ui.registration
+package com.rabotyagi.onboarding.hackaton.ui.frags.registration
 
 import android.R
 import android.animation.ValueAnimator
@@ -9,20 +9,30 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
 import com.rabotyagi.onboarding.hackaton.data.model.Department
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.databinding.FragmentRegistrationBinding
 import com.rabotyagi.onboarding.hackaton.ui._global.BaseFragment
+import com.rabotyagi.onboarding.hackaton.ui.frags.selector.SingleSelectorDialogFragment
+import com.rabotyagi.onboarding.hackaton.ui.frags.selector.SingleSelectorDialogFragment.Companion.ARG_DEPARTMENTS
+import com.rabotyagi.onboarding.hackaton.ui.frags.selector.SingleSelectorDialogFragment.Companion.ARG_DEPARTMENT_ID
+import com.rabotyagi.onboarding.hackaton.ui.frags.selector.SingleSelectorDialogFragment.Companion.ARG_ROLES
+import com.rabotyagi.onboarding.hackaton.ui.frags.selector.SingleSelectorDialogFragment.Companion.ARG_ROLES_CODE
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class RegistrationFragment : BaseFragment() {
+class RegistrationFragment : BaseFragment(), SingleSelectorDialogFragment.Listener {
     private val registrationViewModel by viewModels<RegistrationViewModel>()
 
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
+
+    private var department: Department? = null
+
+    private var role: Role? = null
 
 
     override fun onCreateView(
@@ -39,48 +49,46 @@ class RegistrationFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.continueButton.setOnClickListener {
             if (!binding.firstName.text.toString().isNullOrEmpty() &&
-                binding.email.text.toString().isNullOrEmpty() &&
+                !binding.email.text.toString().isNullOrEmpty() &&
                 !binding.lastName.text.toString().isNullOrEmpty() &&
-                binding.roles.selectedItem.toString().isNullOrEmpty() &&
-                !binding.departmentSpinner.selectedItem.toString().isNullOrEmpty() &&
+                role != null &&
+                department != null &&
                 !binding.password.text.toString().isNullOrEmpty()
             )
                 registrationViewModel.register(
                     firstName = binding.firstName.text.toString(),
                     email = binding.email.text.toString(),
                     lastname = binding.lastName.text.toString(),
-                    role = binding.roles.selectedItem as Role,
-                    department = binding.departmentSpinner.selectedItem as Department,
+                    role = role!!,
+                    department = department!!,
                     password = binding.password.text.toString()
                 )
-            else  Toast.makeText(
+            else Toast.makeText(
                 requireContext(),
                 "Вы не заполнили все поля",
                 Toast.LENGTH_SHORT
             ).show()
         }
-
-        binding.departmentSpinner.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    itemSelected: View, selectedItemPosition: Int, selectedId: Long
-                ) {
-
+        binding.roles.setOnClickListener {
+            SingleSelectorDialogFragment()
+                .apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_ROLES_CODE, role?.code)
+                        putBoolean(ARG_ROLES, true)
+                    }
                 }
+                .show(childFragmentManager, null)
+        }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
-
-        binding.roles.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                itemSelected: View, selectedItemPosition: Int, selectedId: Long
-            ) {
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        binding.departmentSpinner.setOnClickListener {
+            SingleSelectorDialogFragment()
+                .apply {
+                    arguments = Bundle().apply {
+                        department?.id?.let { it1 -> putInt(ARG_DEPARTMENT_ID, it1) }
+                        putBoolean(ARG_DEPARTMENTS, true)
+                    }
+                }
+                .show(childFragmentManager, null)
         }
     }
 
@@ -95,22 +103,7 @@ class RegistrationFragment : BaseFragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }.disposeOnPause()
-            departments.subscribe {
-                val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                    requireContext(),
-                    R.layout.simple_spinner_item, it.map { department -> department.name }
-                )
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-                binding.departmentSpinner.adapter = adapter
-            }.disposeOnPause()
-            roles.subscribe {
-                val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                    requireContext(),
-                    R.layout.simple_spinner_item, it.map { role -> role.name }
-                )
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-                binding.roles.adapter = adapter
-            }.disposeOnPause()
+
             error.subscribe { Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show() }
                 .disposeOnPause()
         }
@@ -132,5 +125,19 @@ class RegistrationFragment : BaseFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDepartmentSelected(item: Department?) {
+        binding.departmentSpinner.text = item?.name ?: ""
+        department = item
+    }
+
+    override fun onRoleSelected(item: Role?) {
+        binding.roles.text = item?.name ?: ""
+        role = item
+    }
+
+    override fun onClose() {
+
     }
 }

@@ -6,4 +6,6 @@
     <string name="tv_continue">Продолжить</string>
     <string name="surname">Фамилия</string>
     <string name="name">Имя</string>
+    <string name="select_department">Выберите департамент</string>
+    <string name="select_role">Выберите роль</string>
 </resources>

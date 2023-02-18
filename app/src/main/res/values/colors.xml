@@ -10,5 +10,7 @@
 
     <color name="loader_background">#BF000000</color>
     <color name="textSecondary">#919399</color>
+    <color name="separator">#33000000</color>
+    <color name="backgroundSecondary">#f2f2f2</color>
 
 </resources>

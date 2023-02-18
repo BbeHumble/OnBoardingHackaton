@@ -87,25 +87,32 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.appcompat.widget.AppCompatSpinner
+            <TextView
                 android:id="@+id/roles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:hint="@string/select_role"
+                android:background="@drawable/bg_secondary_corners_4dp_with_stroke" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
+            <TextView
                 android:id="@+id/departmentSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="30dp"
+                android:padding="15dp"
+                android:hint="@string/select_department"
+                android:background="@drawable/bg_secondary_corners_4dp_with_stroke" />
 
             <Button
                 android:id="@+id/continueButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:hint="@string/select_role"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="30dp"
                 android:text="@string/tv_continue" />

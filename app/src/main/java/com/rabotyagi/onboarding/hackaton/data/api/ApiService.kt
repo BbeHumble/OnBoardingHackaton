@@ -10,6 +10,7 @@ import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
 import io.reactivex.Single
 import io.reactivex.rxjava3.core.Observable
+import retrofit2.http.Body
 import retrofit2.http.GET
 
 interface ApiService {
@@ -25,12 +26,12 @@ interface ApiService {
         @Part("password") password: RequestBody,
     ): Completable
 //
-    @GET("$API_CONST/v1/profile")
+    @GET("$API_CONST/department")
     fun getDepartments(): Single<List<Department>>
 
     @GET("$API_CONST/user/roles")
     fun getRoles(): Single<List<Role>>
 
     @POST("$API_CONST/user")
-    fun register(userData: UserData): Completable
+    fun register(@Body userData: UserData): Completable
 }
