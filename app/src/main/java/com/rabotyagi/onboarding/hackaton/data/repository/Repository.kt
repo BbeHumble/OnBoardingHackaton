@@ -11,8 +11,6 @@ import com.rabotyagi.onboarding.hackaton.data.model.File
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
 import io.reactivex.Single
-import io.reactivex.Observable
-import io.reactivex.Observer
 import javax.inject.Inject
 
 class Repository @Inject internal constructor(
@@ -36,7 +34,7 @@ class Repository @Inject internal constructor(
         return apiService.register(userData).subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
-    fun fetchFiles():Observable<List<File>>{
+    fun fetchFiles(): io.reactivex.Observable<List<File>> {
         return apiService.getFiles()
     }
 
