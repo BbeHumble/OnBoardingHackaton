@@ -1,6 +1,7 @@
 package com.rabotyagi.onboarding.hackaton.di
 
 import android.content.Context
+import com.google.gson.Gson
 import com.rabotyagi.onboarding.hackaton.data.api.ApiService
 import com.rabotyagi.onboarding.hackaton.data.repository.Repository
 import com.rabotyagi.onboarding.hackaton.data.settings.UserSettings
@@ -32,11 +33,11 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun providesUserSettings(@ApplicationContext context: Context) = UserSettings(
+    fun providesUserSettings(@ApplicationContext context: Context, gson: Gson) = UserSettings(
         context.getSharedPreferences(
             UserSettings.AUTH_TOKEN_KEY,
             Context.MODE_PRIVATE
-        )
+        ), context, gson
     )
 
     @Singleton

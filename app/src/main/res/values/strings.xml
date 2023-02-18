@@ -8,4 +8,8 @@
     <string name="name">Имя</string>
     <string name="select_department">Выберите департамент</string>
     <string name="select_role">Выберите роль</string>
+    <string name="profile">Профиль\n</string>
+    <string name="tests">Тесты</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="sign_out_label">Выйти</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.rabotyagi.onboarding.hackaton.data.api
 
+import android.media.MediaRouter.UserRouteInfo
 import io.reactivex.Completable
 import okhttp3.RequestBody
 import retrofit2.http.Multipart
@@ -8,6 +9,7 @@ import retrofit2.http.Part
 import com.rabotyagi.onboarding.hackaton.data.model.Department
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
+import com.rabotyagi.onboarding.hackaton.data.model.login.UserInfo
 import io.reactivex.Single
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.Body
@@ -34,4 +36,7 @@ interface ApiService {
 
     @POST("$API_CONST/user")
     fun register(@Body userData: UserData): Completable
+
+    @GET("$API_CONST/user")
+    fun getUserData(): Single<UserInfo>
 }

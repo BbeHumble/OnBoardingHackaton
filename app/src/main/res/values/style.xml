@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">#fc64d8</item>
+        <item name="colorPrimaryDark">#b78bf7</item>
+        <item name="colorAccent">#daef14</item>
+    </style>
+
+    <style name="Widget.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="lineHeight">12sp</item>
+    </style>
+</resources>
