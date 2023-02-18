@@ -7,6 +7,7 @@ import io.reactivex.rxjava3.core.Observable
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import com.rabotyagi.onboarding.hackaton.data.model.Department
+import com.rabotyagi.onboarding.hackaton.data.model.File
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
 import io.reactivex.Single
@@ -32,6 +33,9 @@ class Repository @Inject internal constructor(
     fun register(userData: UserData): Completable {
         return apiService.register(userData).subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
+    }
+    fun fetchFiles(): io.reactivex.Observable<List<File>> {
+        return apiService.getFiles()
     }
 
     fun fetchRoles(): Single<List<Role>> {

@@ -6,9 +6,14 @@
         android:name="com.rabotyagi.onboarding.hackaton.ui.frags.registration.RegistrationFragment"
         android:label="RegistrationFragment" />
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.SomeFragment"
-        android:label="ProfileFragment" />
+        android:id="@+id/filesFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.files.FilesFragment"
+        android:label="FilesFragment" />
+    <fragment
+        android:id="@+id/filesDetailsFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.files.filesDetails.FilesFragment"
+        android:label="FilesDetailsFragment" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.rabotyagi.onboarding.hackaton.ui.frags.login.LoginFragment"

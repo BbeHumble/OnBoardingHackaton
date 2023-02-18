@@ -5,6 +5,10 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_channel_id"
+        android:value="onboarding_channel" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +21,15 @@
         android:name=".core.Application"
         android:theme="@style/Theme.OnBoardingHackaton"
         tools:targetApi="31">
+        <service
+            android:name=".core.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".ui.container.ContainerActivity"
             android:exported="true">

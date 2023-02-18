@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">OnBoardingHackaton</string>
+    <string name="URL_KEY">URL</string>
     <string name="Login">Войти</string>
     <string name="username">Логин</string>
     <string name="password">Пароль</string>
