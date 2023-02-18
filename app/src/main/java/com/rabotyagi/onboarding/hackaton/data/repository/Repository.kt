@@ -10,6 +10,7 @@ import com.rabotyagi.onboarding.hackaton.data.model.Department
 import com.rabotyagi.onboarding.hackaton.data.model.File
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
+import com.rabotyagi.onboarding.hackaton.data.model.login.UserInfo
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -22,6 +23,11 @@ class Repository @Inject internal constructor(
             username.toRequestBody("text/plain".toMediaTypeOrNull()),
             password.toRequestBody("text/plain".toMediaTypeOrNull())
         ).subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun getUserData(): Single<UserInfo> {
+        return apiService.getUserData().subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
 

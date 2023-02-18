@@ -5,6 +5,7 @@
         android:id="@+id/registrationFragment"
         android:name="com.rabotyagi.onboarding.hackaton.ui.frags.registration.RegistrationFragment"
         android:label="RegistrationFragment" />
+
     <fragment
         android:id="@+id/filesFragment"
         android:name="com.rabotyagi.onboarding.hackaton.ui.files.FilesFragment"
@@ -16,11 +17,16 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.login.LoginFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.login.LoginActivity"
         android:label="LoginFragment" />
 
     <fragment
         android:id="@+id/viewFragment"
         android:name="com.rabotyagi.onboarding.hackaton.ui.frags.view.ViewFragment"
         android:label="ViewFragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

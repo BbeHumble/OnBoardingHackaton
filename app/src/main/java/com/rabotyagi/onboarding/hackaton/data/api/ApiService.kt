@@ -4,6 +4,7 @@ import com.rabotyagi.onboarding.hackaton.data.model.Department
 import com.rabotyagi.onboarding.hackaton.data.model.File
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
+import com.rabotyagi.onboarding.hackaton.data.model.login.UserInfo
 import io.reactivex.Completable
 import io.reactivex.Single
 import okhttp3.RequestBody
@@ -34,4 +35,7 @@ interface ApiService {
 
     @POST("$API_CONST/user")
     fun register(@Body userData: UserData): Completable
+
+    @GET("$API_CONST/user")
+    fun getUserData(): Single<UserInfo>
 }

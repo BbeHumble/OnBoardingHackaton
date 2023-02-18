@@ -1,4 +1,4 @@
-package com.rabotyagi.onboarding.hackaton.entity.login
+package com.rabotyagi.onboarding.hackaton.data.model.login
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
