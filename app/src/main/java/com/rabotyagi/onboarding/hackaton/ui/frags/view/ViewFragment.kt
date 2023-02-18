@@ -31,6 +31,9 @@ class ViewFragment : Fragment() {
         binding.continueButton.setOnClickListener {
             it.findNavController().navigate(R.id.registrationFragment)
         }
+        binding.checkRoadMap.setOnClickListener {
+            it.findNavController().navigate(R.id.filesFragment)
+        }
     }
 
     override fun onDestroyView() {

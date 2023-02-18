@@ -1,6 +1,5 @@
-package com.rabotyagi.onboarding.hackaton.ui.files
+package com.rabotyagi.onboarding.hackaton.ui.frags.files
 
-import android.os.Bundle
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment

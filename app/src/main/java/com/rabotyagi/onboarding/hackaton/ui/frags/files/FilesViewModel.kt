@@ -1,4 +1,4 @@
-package com.rabotyagi.onboarding.hackaton.ui.files
+package com.rabotyagi.onboarding.hackaton.ui.frags.files
 
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.rabotyagi.onboarding.hackaton.data.model.File

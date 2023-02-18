@@ -1,4 +1,4 @@
-package com.rabotyagi.onboarding.hackaton.ui.files.filesDetails
+package com.rabotyagi.onboarding.hackaton.ui.frags.files.filesDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater

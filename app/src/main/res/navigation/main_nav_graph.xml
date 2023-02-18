@@ -7,11 +7,11 @@
         android:label="RegistrationFragment" />
     <fragment
         android:id="@+id/filesFragment"
-        android:name="com.rabotyagi.onboarding.hackaton.ui.files.FilesFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.files.FilesFragment"
         android:label="FilesFragment" />
     <fragment
         android:id="@+id/filesDetailsFragment"
-        android:name="com.rabotyagi.onboarding.hackaton.ui.files.filesDetails.FilesFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.files.filesDetails.FilesFragment"
         android:label="FilesDetailsFragment" />
 
     <fragment

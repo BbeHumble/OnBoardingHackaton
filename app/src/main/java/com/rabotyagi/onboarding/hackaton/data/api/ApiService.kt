@@ -29,7 +29,7 @@ interface ApiService {
     @GET("$API_CONST/user/roles")
     fun getRoles(): Single<List<Role>>
 
-    @POST("/api/user")
+    @GET("/api/document")
     fun getFiles(): io.reactivex.Observable<List<File>>
 
     @POST("$API_CONST/user")
