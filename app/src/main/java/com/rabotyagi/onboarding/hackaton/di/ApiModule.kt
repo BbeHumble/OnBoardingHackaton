@@ -59,6 +59,18 @@ class ApiModule {
             }
             .addInterceptor(httpLoggingInterceptor)
             .addNetworkInterceptor(ReceivedCookiesInterceptor(userSettings))
+            .addNetworkInterceptor { chain ->
+                if (chain.request().url.toString().contains("/login")) {
+                    val newRequest = chain.request().newBuilder()
+                        .addHeader(
+                            "token",
+                            userSettings.getFcmToken() ?: ""
+                        )
+                        .build()
+                    chain.proceed(newRequest)
+                }
+                else chain.proceed(chain.request())
+            }
             .build()
 
 
