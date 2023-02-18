@@ -12,5 +12,8 @@
     <color name="textSecondary">#919399</color>
     <color name="separator">#33000000</color>
     <color name="backgroundSecondary">#f2f2f2</color>
+    <color name="colorPrimary">#fc64d8</color>
+    <color name="colorPrimaryDark">#b78bf7</color>
+    <color name="colorAccent">#daef14</color>
 
 </resources>
