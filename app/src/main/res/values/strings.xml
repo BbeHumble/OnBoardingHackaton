@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OnBoardingHackaton</string>
+    <string name="URL_KEY">URL</string>
 </resources>

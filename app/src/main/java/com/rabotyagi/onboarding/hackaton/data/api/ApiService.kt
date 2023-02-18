@@ -1,9 +1,10 @@
 package com.rabotyagi.onboarding.hackaton.data.api
 
 import com.rabotyagi.onboarding.hackaton.data.model.Department
+import com.rabotyagi.onboarding.hackaton.data.model.File
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -19,4 +20,7 @@ interface ApiService {
 
     @POST("/api/user")
     fun register(userData: UserData): Unit
+
+    @POST("/api/user")
+    fun getFiles(): Observable<List<File>>
 }
