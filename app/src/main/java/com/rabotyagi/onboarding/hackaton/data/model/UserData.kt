@@ -7,10 +7,12 @@ data class UserData(
     val username: String,
     @SerializedName("password")
     val password: String,
-    @SerializedName("email")
-    val email: String,
-    @SerializedName("roles")
-    val roles: List<String>,
-    @SerializedName("department")
-    val department:Department
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("lastName")
+    val lastName: String,
+    @SerializedName("role")
+    val role: String,
+    @SerializedName("departmentId")
+    val departmentId: Int
 )

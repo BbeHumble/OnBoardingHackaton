@@ -4,23 +4,36 @@ import com.rabotyagi.onboarding.hackaton.data.model.Department
 import com.rabotyagi.onboarding.hackaton.data.model.File
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.data.model.UserData
+import io.reactivex.Single
+import io.reactivex.rxjava3.core.Observable
+import retrofit2.http.Body
 import io.reactivex.Observable
 import retrofit2.http.GET
-import retrofit2.http.POST
 
 interface ApiService {
-    //    @POST("/api/v1/auth/login")
-//    suspend fun login(@Body authorizationBody: AuthorizationRequestBody): BaseResponse<AuthorizationResponseBody>
-//
-    @GET("/api/v1/profile/")
-    fun getDepartments(): Observable<List<Department>>
 
-    @GET("/api/user/roles")
-    fun getRoles(): Observable<List<Role>>
+    companion object {
+        private const val API_CONST = "api"
+    }
+
+    @POST("$API_CONST/login")
+    @Multipart
+    fun login(
+        @Part("username") username: RequestBody,
+        @Part("password") password: RequestBody,
+    ): Completable
+//
+    @GET("$API_CONST/department")
+    fun getDepartments(): Single<List<Department>>
+
+    @GET("$API_CONST/user/roles")
+    fun getRoles(): Single<List<Role>>
 
     @POST("/api/user")
     fun register(userData: UserData): Unit
 
     @POST("/api/user")
     fun getFiles(): Observable<List<File>>
+    @POST("$API_CONST/user")
+    fun register(@Body userData: UserData): Completable
 }

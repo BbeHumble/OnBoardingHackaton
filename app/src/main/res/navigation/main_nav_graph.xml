@@ -3,7 +3,7 @@
     android:id="@+id/main_nav_graph">
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.rabotyagi.onboarding.hackaton.ui.registration.RegistrationFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.registration.RegistrationFragment"
         android:label="RegistrationFragment" />
     <fragment
         android:id="@+id/filesFragment"
@@ -13,4 +13,14 @@
         android:id="@+id/filesDetailsFragment"
         android:name="com.rabotyagi.onboarding.hackaton.ui.files.filesDetails.FilesFragment"
         android:label="FilesDetailsFragment" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.login.LoginFragment"
+        android:label="LoginFragment" />
+
+    <fragment
+        android:id="@+id/viewFragment"
+        android:name="com.rabotyagi.onboarding.hackaton.ui.frags.view.ViewFragment"
+        android:label="ViewFragment" />
 </navigation>

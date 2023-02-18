@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "795292551237",
+    "project_id": "onboarding-bd961",
+    "storage_bucket": "onboarding-bd961.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795292551237:android:05ff41f627becbbe16fb2c",
+        "android_client_info": {
+          "package_name": "com.rabotyagi.onboarding.hackaton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795292551237-nvi1pvl6jaqfgf5m4vti3415c48fmb35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrSQvF3pxuKsLkzSUtRQ_Ew1Cz4h3trgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795292551237-nvi1pvl6jaqfgf5m4vti3415c48fmb35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
