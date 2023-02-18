@@ -6,11 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.rabotyagi.onboarding.hackaton.data.model.Department
 import com.rabotyagi.onboarding.hackaton.data.model.Role
 import com.rabotyagi.onboarding.hackaton.databinding.FragmentRegistrationBinding
@@ -102,6 +101,8 @@ class RegistrationFragment : BaseFragment(), SingleSelectorDialogFragment.Listen
                     "Вы зарегистрировали нового пользователя",
                     Toast.LENGTH_SHORT
                 ).show()
+                binding.continueButton.findNavController()
+                    .navigate(com.rabotyagi.onboarding.hackaton.R.id.viewFragment)
             }.disposeOnPause()
 
             error.subscribe { Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show() }

@@ -22,7 +22,7 @@ class RegistrationViewModel @Inject constructor(
     private val registerRelay = PublishRelay.create<Boolean?>()
     val register: Observable<Boolean> = registerRelay.hide()
 
-    private val errorRelay = BehaviorRelay.create<String>()
+    private val errorRelay = PublishRelay.create<String>()
     val error: Observable<String> = errorRelay.hide()
 
     /*    init {
